@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Me</title>
+<style>
+    :root {
+        --bg-main: #0b0f19;
+        --bg-sidebar: #111520;
+        --bg-panel: #1a1f2e;
+        --border-color: #2a3143;
+        --text-light: #ffffff;
+        --text-muted: #8b949e;
+        --accent: #3b82f6;
+        --err: #ef4444;
+        --ok: #22c55e;
+        --eh: #eab308;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+
+    body { display: flex; height: 100vh; background-color: var(--bg-main); color: var(--text-light); }
+
+    /* Sidebar Styles */
+    #sidebar {
+        width: 260px;
+        background-color: var(--bg-sidebar);
+        border-right: 1px solid var(--border-color);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+    }
+    .nav-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-muted);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .nav-btn:hover { background: var(--bg-panel); color: var(--text-light); }
+
+    /* Main Content Styles */
+    #main-content {
+        flex-grow: 1;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container { display: none; width: 100%; max-width: 700px; flex-direction: column; gap: 20px; }
+    .container.active { display: flex; }
+
+    /* Home View Specifics */
+    .header-icon { text-align: center; font-size: 3rem; margin-bottom: 20px; }
+    .status-grid { display: flex; gap: 20px; }
+    .box {
+        flex: 1;
+        background-color: var(--bg-panel);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+    }
+    .box h3 { font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; }
+    .box h2 { font-size: 2rem; margin-bottom: 5px; }
+    .box p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+
+    /* Notes View Specifics */
+    #notes-input {
+        width: 100%;
+        min-height: 400px;
+        background-color: var(--bg-main);
+        color: var(--text-light);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 15px;
+        font-size: 1rem;
+        line-height: 1.5;
+        resize: vertical; /* Allows user to drag to resize vertically */
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    #notes-input:focus {
+        border-color: var(--accent);
+    }
+</style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <h3 style="color: var(--accent); margin-bottom: 20px;">🏛️ DE ROMANIS</h3>
+        <button class="nav-btn" onclick="showView('home-view')">Home</button>
+        <button class="nav-btn" onclick="showView('notes-view')">Notes</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+        
+        <!-- HOME VIEW -->
+        <div id="home-view" class="container active">
+            <div class="header-icon">For Me</div>
+            
+            <div class="status-grid">
+                <div class="box" id="streak-box">
+                    <h3>Best Streak</h3>
+                    <h2 id="home-best-streak">0</h2>
+                    <p id="home-streak-label">Not good enough</p>
+                </div>
+                
+                <div class="box" id="status-box">
+                    <h3>Status</h3>
+                    <h2 id="home-status-msg" style="font-size: 1.2rem; margin-top: 15px;">prob gonna procrastinate</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTES VIEW -->
+        <div id="notes-view" class="container">
+            <div class="box" style="display: flex; flex-direction: column; text-align: left;">
+                <h2 style="margin-bottom: 15px;">My Notes</h2>
+                <textarea id="notes-input" placeholder="Type your notes here... They will auto-save." oninput="saveNotes()"></textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Switch between views
+        function showView(id) {
+            document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // Save notes to local storage as you type
+        function saveNotes() {
+            const noteText = document.getElementById('notes-input').value;
+            localStorage.setItem('my_saved_notes', noteText);
+        }
+
+        // Load notes from local storage when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedNotes = localStorage.getItem('my_saved_notes');
+            if (savedNotes !== null) {
+                document.getElementById('notes-input').value = savedNotes;
+            }
+        });
+    </script>
+</body>
+</html>
