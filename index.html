@@ -94,9 +94,10 @@
 
     <!-- SIDEBAR -->
     <div id="sidebar">
-        <h3 style="color: var(--accent); margin-bottom: 20px;">🏛️ DE ROMANIS</h3>
+        <h3 style="color: var(--accent); margin-bottom: 20px;">FormE</h3>
         <button class="nav-btn" onclick="showView('home-view')">Home</button>
         <button class="nav-btn" onclick="showView('notes-view')">Notes</button>
+        <button class="nav-btn" onclick="showView('counter-view')">Counter</button>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -111,10 +112,17 @@
         <div id="notes-view" class="container">
             <div class="box" style="display: flex; flex-direction: column; text-align: left;">
                 <h2 style="margin-bottom: 15px;">No Tes</h2>
-                <textarea id="notes-input" placeholder="Type your notes here... They will auto-save." oninput="saveNotes()"></textarea>
+                <textarea id="notes-input" placeholder="no tes here pls" oninput="saveNotes()"></textarea>
             </div>
         </div>
 
+        <div id="counter-view" class="container">
+            <div class="box" style="display: flex; flex-direction: column; text-align: left;">
+                <h2 style="margin-bottom: 15px;">count'uh</h2>
+                <div id="number-thing" style="font-size: 4.5rem; font-weight: bold;">0</div>
+            </div>
+        </div>
+        
     </div>
 
     <!-- SCRIPTS -->
