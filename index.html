@@ -44,6 +44,33 @@
     }
     .nav-btn:hover { background: var(--bg-panel); color: var(--text-light); }
 
+    .upup-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--ok);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .downdown-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--err);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .upup-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-muted);
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
     /* Main Content Styles */
     #main-content {
         flex-grow: 1;
@@ -143,9 +170,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const savedNotes = localStorage.getItem('my_saved_notes');
-            if (savedNotes !== null) {
-                document.getElementById('notes-input').value = savedNotes;
+            const savedstuff = localStorage.getItem('my_saved_notes');
+            if (savedstuff !== null) {
+                document.getElementById('notes-input').value = savedstuff;
             }
         });
 
