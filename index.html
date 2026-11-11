@@ -115,37 +115,58 @@
                 <textarea id="notes-input" placeholder="no tes here pls" oninput="saveNotes()"></textarea>
             </div>
         </div>
-
+        <!-- COUNTER VIW -->
         <div id="counter-view" class="container">
             <div class="box" style="display: flex; flex-direction: column; text-align: left;">
                 <h2 style="margin-bottom: 15px;">count'uh</h2>
                 <div id="number-thing" style="font-size: 4.5rem; font-weight: bold;">0</div>
+
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button id="downdown-btn">-</button>
+                    <button id="nil-btn">reset ts</button>
+                    <button id="upup-btn">+</button>
+                </div>
             </div>
         </div>
         
     </div>
 
-    <!-- SCRIPTS -->
     <script>
-        // Switch between views
         function showView(id) {
             document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
 
-        // Save notes to local storage as you type
         function saveNotes() {
             const noteText = document.getElementById('notes-input').value;
             localStorage.setItem('my_saved_notes', noteText);
         }
 
-        // Load notes from local storage when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             const savedNotes = localStorage.getItem('my_saved_notes');
             if (savedNotes !== null) {
                 document.getElementById('notes-input').value = savedNotes;
             }
         });
+
+        let countuh = 0;
+        const displaycountuh = document.getElementById('number-thing');
+
+        document.getElementById('upup-btn').addEventListener('click', () => {
+            count++;
+            displaycountuh.textContent = count;
+        });
+        
+        document.getElementById('downdown-btn').addEventListener('click', () => {
+            count--;
+            displaycountuh.textContent = count;
+        });
+        
+        document.getElementById('nil-btn').addEventListener('click', () => {
+            count = 0;
+            displaycountuh.textContent = count;
+        });
+        
     </script>
 </body>
 </html>
