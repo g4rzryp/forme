@@ -44,7 +44,7 @@
     }
     .nav-btn:hover { background: var(--bg-panel); color: var(--text-light); }
 
-    .upup-btn {
+    .gren-btn {
         background: transparent;
         border: 1px solid var(--border-color);
         color: var(--ok);
@@ -53,19 +53,10 @@
         cursor: pointer;
         transition: 0.2s;
     }
-    .downdown-btn {
+    .red-btn {
         background: transparent;
         border: 1px solid var(--border-color);
         color: var(--err);
-        padding: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .upup-btn {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-muted);
         padding: 10px;
         border-radius: 6px;
         cursor: pointer;
@@ -149,9 +140,9 @@
                 <div id="number-thing" style="font-size: 4.5rem; font-weight: bold;">0</div>
 
                 <div style="margin-top: 20px; display: flex; gap: 10px;">
-                    <button id="downdown-btn">-</button>
-                    <button id="nil-btn">reset ts</button>
-                    <button id="upup-btn">+</button>
+                    <button class="red-btn" id="downdown-btn">-</button>
+                    <button class="nav-btn" id="nil-btn">reset ts</button>
+                    <button class="gren-btn" id="upup-btn">+</button>
                 </div>
             </div>
         </div>
@@ -180,18 +171,18 @@
         const displaycountuh = document.getElementById('number-thing');
 
         document.getElementById('upup-btn').addEventListener('click', () => {
-            count++;
-            displaycountuh.textContent = count;
+            countuh++;
+            displaycountuh.textContent = countuh;
         });
         
         document.getElementById('downdown-btn').addEventListener('click', () => {
-            count--;
-            displaycountuh.textContent = count;
+            countuh--;
+            displaycountuh.textContent = countuh;
         });
         
         document.getElementById('nil-btn').addEventListener('click', () => {
-            count = 0;
-            displaycountuh.textContent = count;
+            countuh = 0;
+            displaycountuh.textContent = countuh;
         });
         
     </script>
