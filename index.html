@@ -89,7 +89,7 @@
     .box p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
 
     /* Notes View Specifics */
-    #notes-input {
+    #notes-input, .styled-textarea {
         width: 100%;
         min-height: 400px;
         background-color: var(--bg-main);
@@ -116,6 +116,7 @@
         <button class="nav-btn" onclick="showView('home-view')">Home</button>
         <button class="nav-btn" onclick="showView('notes-view')">Notes</button>
         <button class="nav-btn" onclick="showView('counter-view')">Counter</button>
+        <button class="nav-btn" onclick="showView('recipie-view')">Recipies</button>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -147,6 +148,20 @@
             </div>
         </div>
         
+        <div id="recipie-view" class="container">
+            <div class="box" style="display: flex; flex-direction: column; text-align: left;">
+                <h2 style="margin-bottom: 15px;">Rec I Pie</h2>
+                <textarea id="recipe-input" class="styled-textarea" readonly>Microwave Pork: 
+                    - 500g mince pork
+                    - 1 tbsp oil
+                    - 3 tbsp Soy sauce
+                    - 2 tsp corn flour
+                    - 3 tbsp water
+                    - 2 eggs
+                    
+                    Put in the microwave for 5 minutes followed by 3 minutes on high</textarea>
+            </div>
+        </div>
     </div>
 
     <script>
